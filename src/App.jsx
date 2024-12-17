@@ -1,20 +1,18 @@
 import React from 'react';
-
+import { tablapartidas }  from './components/tablaPartidas.jsx';
 function App() {
-  const nombre = 'Carlos';
-  console.log(nombre);
-
+  
+  console.log()
   return (
     <div>
       <a href="https://example.com" target="_blank" rel="noreferrer">Visita nuestro sitio</a>
+      <tablapartidas />
     </div>
   );
 }
 
-function saludo() {
-  console.log("Hola mundo!");
-}
 
-saludo();
+
+
 
 export default App;
