@@ -1,12 +1,12 @@
 import React from 'react';
-import { tablapartidas }  from './components/tablaPartidas.jsx';
+import  Tablapartidas   from './components/TablaPartidas.jsx';
 function App() {
   
-  console.log()
+  console.log(Tablapartidas);
   return (
     <div>
       <a href="https://example.com" target="_blank" rel="noreferrer">Visita nuestro sitio</a>
-      <tablapartidas />
+      <Tablapartidas />
     </div>
   );
 }
