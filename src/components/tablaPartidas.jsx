@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-
 function Tablapartidas() {
     const [partidas, setPartidas] = useState([
         // Ejemplo de datos de partidas
@@ -11,6 +10,7 @@ function Tablapartidas() {
     const [ordenPuntosAsc, setOrdenPuntosAsc] = useState(true);
     const [ordenFechaAsc, setOrdenFechaAsc] = useState(true);
     
+
 
     function Ordenarnick() {
         const arrayordenadonick = partidas.sort((a, b) => 
@@ -36,22 +36,24 @@ function Tablapartidas() {
         setPartidas([...arrayordenadofecha]);
     }
     function agregarPartida(){
-
-        const nuevoNick = document.querySelector('#nick').textContent
-        const nuevoPuntos = parseInt(document.querySelector('#puntos').textContent)
-        const nuevaFecha = document.querySelector('#fecha').textContent
-
-        setPartidas([...partidas, {nick: nuevoNick, puntos: nuevoPuntos, fecha: nuevaFecha}])
-        document.querySelector('#nick').textContent = ''
-        document.querySelector('#puntos').textContent = ''
-        document.querySelector('#fecha').textContent = ''
-        
-        
-
-
+        const nick = document.querySelector('#nick').value;
+        const puntos = parseInt(document.querySelector('#puntos').value);
+        const fecha = document.querySelector('#fecha').value;
+        const nuevaPartida = { nick, puntos, fecha };
+        setPartidas([...partidas, nuevaPartida]);
+        document.querySelector('#nick').value = '';
+        document.querySelector('#puntos').value = '';
+        document.querySelector('#fecha').value = '';
     }
-    
 
+
+
+
+
+
+
+
+    
     return (
         <div className='text-white m-3 rounded-5 bg-dark p-3'>
             <table className='table table-dark table-hover  '>
@@ -93,15 +95,15 @@ function Tablapartidas() {
                             <form className='text-dark'>
                                 <div className="mb-3">
                                     <label htmlFor="nick" className="form-label ">Nick:</label>
-                                    <input type="text" className="form-control" id="nick" />
+                                    <input type="text" className="form-control" id="nick" required/>
                                 </div>
                                 <div className="mb-3">
                                     <label htmlFor="puntos" className="form-label">Puntos:</label>
-                                    <input type="number" className="form-control" id="puntos"  />
+                                    <input type="number" className="form-control" id="puntos"  required/>
                                 </div>
                                 <div className="mb-3">
                                     <label htmlFor="fecha" className="form-label">Fecha:</label>
-                                    <input type="date" className="form-control" id="fecha"  />
+                                    <input type="text" className="form-control" id="fecha" required  placeholder='aaaa-mm-dd' />
                                 </div>
                             </form>
                         </div>
@@ -112,16 +114,13 @@ function Tablapartidas() {
                     </div>
                 </div>
             </div>
-        
 
-   
 
-      
+
+
+
     </div>
-        
-        
-      
     );
 }
-
 export default Tablapartidas;
+
