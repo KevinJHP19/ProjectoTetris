@@ -1,22 +1,71 @@
+import React, { useState } from 'react';
 
-import React from 'react';
-
-export default function tablapartidas() {
+function Tablapartidas() {
+    const [partidas, setPartidas] = useState([
+        // Ejemplo de datos de partidas
+        { nick: 'Mruwu', puntos: 1000, fecha: '2023-01-01' },
+        { nick: 'Pablo', puntos: 1500, fecha: '2023-02-01' },
+        { nick: 'Juan', puntos: 1200, fecha: '2023-01-15' },
+    ]);
+    const [ordenNickAsc, setOrdenNickAsc] = useState(true);
+    const [ordenPuntosAsc, setOrdenPuntosAsc] = useState(true);
+    const [ordenFechaAsc, setOrdenFechaAsc] = useState(true);
     
-    let partidas = [
-        {nick: "Mruwu", puntos : 1000, fecha: "10/12/2024" },
-        {nick: "Pepe", puntos : 1500, fecha: "15/12/2024"},
-        {nick: "Juan", puntos : 800, fecha: "17/12/2024"},
-    ];
+
+    function Ordenarnick() {
+        const arrayordenadonick = partidas.sort((a, b) => 
+            ordenNickAsc ? a.nick.localeCompare(b.nick) : b.nick.localeCompare(a.nick)
+        );
+        setOrdenNickAsc(!ordenNickAsc);
+        setPartidas([...arrayordenadonick]);
+    }
+
+    function Ordenarpuntos() {
+        const arrayordenadopuntos = partidas.sort((a, b) => 
+            ordenPuntosAsc ? a.puntos - b.puntos : b.puntos - a.puntos
+        );
+        setOrdenPuntosAsc(!ordenPuntosAsc);
+        setPartidas([...arrayordenadopuntos]);
+    }
+
+    function Ordenarfecha() {
+        const arrayordenadofecha = partidas.sort((a, b) => 
+            ordenFechaAsc ? new Date(a.fecha) - new Date(b.fecha) : new Date(b.fecha) - new Date(a.fecha)
+        );
+        setOrdenFechaAsc(!ordenFechaAsc);
+        setPartidas([...arrayordenadofecha]);
+    }
+    function agregarPartida(){
+
+        const nuevoNick = document.querySelector('#nick').textContent
+        const nuevoPuntos = parseInt(document.querySelector('#puntos').textContent)
+        const nuevaFecha = document.querySelector('#fecha').textContent
+
+        setPartidas([...partidas, {nick: nuevoNick, puntos: nuevoPuntos, fecha: nuevaFecha}])
+        document.querySelector('#nick').textContent = ''
+        document.querySelector('#puntos').textContent = ''
+        document.querySelector('#fecha').textContent = ''
+        
+        
+
+
+    }
+    
 
     return (
-        <div className='text-white'>
-            <table className='table '>
+        <div className='text-white m-3 rounded-5 bg-dark p-3'>
+            <table className='table table-dark table-hover  '>
                 <thead>
                     <tr>
-                        <th>Nick</th>
-                        <th>Puntos</th>
-                        <th>Fecha</th>
+                        <th>
+                            Nick <button onClick={Ordenarnick} className='btn btn-primary'>Ordenar</button>
+                        </th>
+                        <th>
+                            Puntos <button onClick={Ordenarpuntos} className='btn btn-primary'>Ordenar</button>
+                        </th>
+                        <th>
+                            Fecha <button onClick={Ordenarfecha} className='btn btn-primary'>Ordenar</button>
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -29,6 +78,50 @@ export default function tablapartidas() {
                     ))}
                 </tbody>
             </table>
-        </div>
+            <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Agregar nueva partida
+            </button>
+            {/* Modal */}
+            <div className="modal fade text-dark" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div className="modal-dialog">
+                    <div className="modal-content">
+                        <div className="modal-header text-venter">
+                            <h5 className="modal-title" id="exampleModalLabel">Agregar nueva partida</h5>
+                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div className="modal-body text-start">
+                            <form className='text-dark'>
+                                <div className="mb-3">
+                                    <label htmlFor="nick" className="form-label ">Nick:</label>
+                                    <input type="text" className="form-control" id="nick" />
+                                </div>
+                                <div className="mb-3">
+                                    <label htmlFor="puntos" className="form-label">Puntos:</label>
+                                    <input type="number" className="form-control" id="puntos"  />
+                                </div>
+                                <div className="mb-3">
+                                    <label htmlFor="fecha" className="form-label">Fecha:</label>
+                                    <input type="date" className="form-control" id="fecha"  />
+                                </div>
+                            </form>
+                        </div>
+                        <div className="modal-footer">
+                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            <button type="button" className="btn btn-primary"  data-bs-dismiss="modal" onClick={agregarPartida}>Guardar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+
+   
+
+      
+    </div>
+        
+        
+      
     );
 }
+
+export default Tablapartidas;
