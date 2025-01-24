@@ -1,5 +1,7 @@
 import React from 'react';
+
 import  Tablapartidas   from './components/tablaPartidas.jsx';
+import { BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom';
 function App() {
   
   console.log(Tablapartidas);
