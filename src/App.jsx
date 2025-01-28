@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom';
 import InicioVista from './components/inicioVista.jsx';
 import Juego from './components/Juego.jsx';
 import PartidasVista from './components/PartidasVista.jsx';
+import RankingVista from './components/RankingVista.jsx';
 
 function App() { 
   return ( 
@@ -24,6 +25,9 @@ function App() {
             <li className='nav-item'>
               <Link className='nav-link' to='/Partidas'>Partidas</Link>
             </li>
+            <li className='nav-item'>
+              <Link className='nav-link' to='/Ranking'>Ranking</Link>
+            </li>
             
           </ul>
         </div>
@@ -35,6 +39,7 @@ function App() {
       <Route path='/' element={<InicioVista/>} />
       <Route path='/Juego' element={<Juego />} />
       <Route path='/Partidas' element={<PartidasVista />} />
+      <Route path='/Ranking' element={<RankingVista />} />
     </Routes>
     </div>
   </Router>
