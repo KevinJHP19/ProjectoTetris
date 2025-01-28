@@ -1,35 +1,43 @@
 import React from 'react';
-
-import  Tablapartidas   from './components/tablaPartidas.jsx';
 import { BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom';
-function App() {
-  
-  console.log(Tablapartidas);
-  return (
-    <div>
-      <header className="d-flex align-items-center justify-content-center">
-			<img src="logo.png" alt="logo" width="200" className="mt-5" />
-		</header>
-		<main className="container-fluid mt-5 bg-opacity-50 bg-dark p-2 text-">
-			
-      <div id="intro" className="text-center p-5">
-        <p>Tetris és un videojoc de tipus trencaclosques. Fou inventat per el enginyer informàtic rus Aleksei Pàjitnov el any 1984,[1] mentre treballava a l Acadèmia de Ciències de Moscou.</p>
-        <h2>Instruccions:</h2>
-        <p>Pots moure les peces fent servir les fletxes de esquerra i dreta</p>
-        <p>Amb la fletxa avall pots girar la peça</p>
-        <p><strong>Ñ</strong> per canviar la peça actual per la peça que està a punt de sortir (que pots veure a la columna de la dreta)</p>
-        <p>Al final de la partida podràs desar la teva puntuació, i verue el ranking de jugadors</p>
-        <button className="btn btn-success fs-1 mt-5">JUGAR</button>
-				<Tablapartidas />
-        
+import InicioVista from './components/inicioVista.jsx';
+import Juego from './components/Juego.jsx';
+import  Tablapartidas   from './components/tablaPartidas.jsx';
 
+const App = () => ( 
+  <Router>
+    <nav className='navbar navbar-expand-lg navbar-light bg-light fixed-top'>
+      <div className='container-fluid'>
+        <Link className='navbar-brand' to='/'>Tetris</Link>
+        <button className='navbar-toggler' type='button' data-bs-toggle='collapse' data-bs-target='#navbarNav' aria-controls='navbarNav' aria-expanded='false' aria-label='Toggle navigation'>
+          <span className='navbar-toggler-icon'><img src="logo.png" alt="" /></span>
+        </button>
+        <div className='collapse navbar-collapse' id='navbarNav'>
+          <ul className='navbar-nav'>
+            <li className='nav-item'>
+              <Link className='nav-link active' aria-current='page' to='/'>Home</Link>
+            </li>
+            <li className='nav-item'>
+              <Link className='nav-link' to='/Juego'>Juego</Link>
+            </li>
+            <li className='nav-item'>
+              <Link className='nav-link' to='/Partidas'>Partidas</Link>
+            </li>
+          </ul>
+        </div>
       </div>
-      </main>
-			
-      
+    </nav>
+  
+  <div className='container-fluid mt-4 ' >
+    <Routes>
+      <Route path='/' element={<InicioVista/>} />
+      <Route path='/Juego' element={<Juego />} />
+      <Route path='/tabla' element={<Tablapartidas />} />
+    </Routes>
     </div>
-  );
-}
+  </Router>
+  
+)
 
 
 
