@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-function Tablapartidas() {
+export default function Tablapartidas() {
     const [partidas, setPartidas] = useState([
         // Ejemplo de datos de partidas
         { nick: 'Mruwu', puntos: 1000, fecha: '2023-01-01' },
@@ -46,14 +46,6 @@ function Tablapartidas() {
         document.querySelector('#fecha').value = '';
     }
 
-
-
-
-
-
-
-
-    
     return (
         <div className='text-white m-3 rounded-5 bg-dark p-3'>
             <table className='table table-dark table-hover  '>
@@ -122,5 +114,5 @@ function Tablapartidas() {
     </div>
     );
 }
-export default Tablapartidas;
+ 
 

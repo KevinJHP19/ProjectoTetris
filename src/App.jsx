@@ -2,9 +2,10 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom';
 import InicioVista from './components/inicioVista.jsx';
 import Juego from './components/Juego.jsx';
-import  Tablapartidas   from './components/tablaPartidas.jsx';
+import PartidasVista from './components/PartidasVista.jsx';
 
-const App = () => ( 
+function App() { 
+  return ( 
   <Router>
     <nav className='navbar navbar-expand-lg navbar-light bg-light fixed-top'>
       <div className='container-fluid'>
@@ -23,6 +24,7 @@ const App = () => (
             <li className='nav-item'>
               <Link className='nav-link' to='/Partidas'>Partidas</Link>
             </li>
+            
           </ul>
         </div>
       </div>
@@ -32,15 +34,11 @@ const App = () => (
     <Routes>
       <Route path='/' element={<InicioVista/>} />
       <Route path='/Juego' element={<Juego />} />
-      <Route path='/tabla' element={<Tablapartidas />} />
+      <Route path='/Partidas' element={<PartidasVista />} />
     </Routes>
     </div>
   </Router>
   
 )
-
-
-
-
-
+}
 export default App;
