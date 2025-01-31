@@ -1,4 +1,5 @@
 import React from 'react';
+import colorPieza from '../lib/colorPieza';
 export default function Panel({ modelos }) {
     
     
@@ -8,7 +9,7 @@ export default function Panel({ modelos }) {
             {modelos.map((fila, filaIndex) => (
                 <div key={filaIndex} className='row'>
                     {fila.map((celda, celdaIndex) => (
-                        <div key={celdaIndex} className='col border'>
+                        <div key={celdaIndex} className={`col border ${colorPieza(celda)}`}>
                             {celda}
                         </div>
                     ))}

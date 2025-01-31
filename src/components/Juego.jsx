@@ -14,7 +14,7 @@ export default function  Juego(){
                 
             <Panel modelos={arrayCasillas} />
             <br></br>
-            <Pieza modelos={modelos.piezas[0].matriz[0]} />
+            <Pieza modelos={modelos.piezas[4].matriz[0]} />
             </div>
     
     
