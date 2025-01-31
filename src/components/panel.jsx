@@ -1,13 +1,14 @@
 import React from 'react';
+export default function Panel({ modelos }) {
+    
+    
 
-
-export default function Panel({modelos}){
     return (
-        <div className=''>
-            {modelos.map((fila, index) => (
-                <div key={index} className='row'>
-                    {fila.map((celda, index) =>(
-                        <div key={index} className='col border'>
+        <div className='panel'>
+            {modelos.map((fila, filaIndex) => (
+                <div key={filaIndex} className='row'>
+                    {fila.map((celda, celdaIndex) => (
+                        <div key={celdaIndex} className='col border'>
                             {celda}
                         </div>
                     ))}
@@ -16,7 +17,4 @@ export default function Panel({modelos}){
         </div>
     );
 }
-
-
-
 

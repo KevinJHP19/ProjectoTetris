@@ -1,6 +1,5 @@
-const modelos = {
+ export const modelos = {
     matriz: [
-        [1,0,0,0,0,0,0,0,0,0,0,1],
         [1,0,0,0,0,0,0,0,0,0,0,1],
         [1,0,0,0,0,0,0,0,0,0,0,1],
         [1,0,0,0,0,0,0,0,0,0,0,1],
@@ -155,4 +154,3 @@ const modelos = {
 
     ]
 }
-export default modelos;
