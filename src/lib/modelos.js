@@ -50,15 +50,6 @@
             ]
         },
         {
-            nombre: "cuadro",
-            matriz:[
-                [
-                    [4,4],
-                    [4,4]
-                ]
-            ]
-        },
-        {
             nombre:"Jota",
             matriz:[
                 [
@@ -83,6 +74,16 @@
             ]
 
         },
+        {
+            nombre: "cuadro",
+            matriz:[
+                [
+                    [4,4],
+                    [4,4]
+                ]
+            ]
+        },
+        
         {
             nombre: "Te",
             matriz: [

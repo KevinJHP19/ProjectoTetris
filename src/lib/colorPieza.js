@@ -6,25 +6,25 @@ export default function colorPieza(pieza){
             return 'bg-secondary'
         }
         case 2: {
-            return 'bg-primary'
+            return 'bg-l'
         }
         case 3:{
-            return 'bg-danger'
+            return 'bg-j'
         }
         case 4:{
-            return 'bg-warning'
+            return 'bg-cuadrado'
         }
         case 5:{
-            return 'bg-success'
+            return 'bg-t'
         }
         case 6:{
-            return 'bg-info'
+            return 'bg-s'
         }
         case 7:{
-            return 'bg-light'
+            return 'bg-z'
         }
         case 8:{
-            return 'bg-info-subtle'
+            return 'bg-palo'
         }
         default:{
             return 'bg-dark'
