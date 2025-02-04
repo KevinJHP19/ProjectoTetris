@@ -1,4 +1,4 @@
-import React, { useState }  from 'react';
+import React, { useState, useEffect }  from 'react';
 
 import { modelos }   from '../lib/modelos.js';
 import Panel from './Panel.jsx';
@@ -10,7 +10,7 @@ export default function  Juego(){
         const pieza2 = nuevaPieza();
         const pieza3 = nuevaPieza();
         const pieza4 = nuevaPieza();
-        
+        const [flecha, setflecha] = useState('');
         
     
         const [arrayCasillas, setArrayCasillas] = useState(modelos.matriz);
@@ -40,6 +40,53 @@ export default function  Juego(){
         function insertarNuevaPieza(){
                 setpiezaActual(nuevaPieza());
         }
+        function moverDra(){
+                console.log('Moviste a la derecha')
+        }
+        function moverIz(){
+                console.log('Moviste a la izquierda')
+        }
+        function girar(){
+                console.log('Giraste')
+        }
+        function bajar(){
+                console.log('Bajaste')
+        }
+        
+        useEffect(() =>{
+                function controlTeclas(){
+                        
+                        setflecha(event.key)
+                        
+                        switch(flecha){
+                                case 'ArrowLeft':
+                                        moverIz();
+                                        break;
+                                case 'ArrowRight':
+                                        moverDra();
+                                        
+                                        break;
+                                case 'ArrowDown':
+                                        bajar();
+                                        break;
+                                case 'g':
+                                        girar();
+                                        break;
+                                default:
+                                        break;
+                        }
+                }
+                console.log("Se ejecuta el useEffect")
+                window.addEventListener('keydown', controlTeclas)
+                return () => {
+                        window.removeEventListener('keydown', controlTeclas)
+                }
+
+        }
+        
+
+
+)
         
         
         
