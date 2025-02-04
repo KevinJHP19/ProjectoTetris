@@ -16,10 +16,11 @@ export default function  Juego(){
         const [arrayCasillas, setArrayCasillas] = useState(modelos.matriz);
 
         const [piezaActual, setpiezaActual] = useState(nuevaPieza());
+        
         if (piezaActual.columna === 1 || piezaActual.columna === 11) {
                 const minimo = 1;
-                piezaActual.columna = Math.floor(Math.random() * (10 - minimo)) + minimo;
-                const pintarPieza = () =>{
+                piezaActual.columna = Math.floor(Math.random() * (9 - minimo)) + minimo;
+                const pintarPieza = () =>  {
                         piezaActual.matriz.map((fila, filaIndex) => {
                                 fila.map((celda, celdaIndex) => {
                                         arrayCasillas[piezaActual.fila + filaIndex][piezaActual.columna + celdaIndex] = celda;
@@ -30,11 +31,15 @@ export default function  Juego(){
                 )}
                 console.log(piezaActual);
                 if(pintarPieza()){
+
+                        
                 setArrayCasillas(arrayCasillas);
         }
         }
         
-        
+        function insertarNuevaPieza(){
+                setpiezaActual(nuevaPieza());
+        }
         
         
         
@@ -46,6 +51,7 @@ export default function  Juego(){
             <div id="intro" className='text-center p-5 bg-seconday text-white' style={{fontSize: '1.5em'}}>
                 
             <Panel modelos={arrayCasillas} />
+            <button className='btn btn-primary' onClick={insertarNuevaPieza}>Insertarpieza</button>
             <br></br>
             <Pieza modelos={modelos.piezas[4].matriz[0]} />
                 <br></br>
