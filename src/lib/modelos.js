@@ -1,9 +1,5 @@
-
-
-
-const modelos = {
+ export const modelos = {
     matriz: [
-        [1,0,0,0,0,0,0,0,0,0,0,1],
         [1,0,0,0,0,0,0,0,0,0,0,1],
         [1,0,0,0,0,0,0,0,0,0,0,1],
         [1,0,0,0,0,0,0,0,0,0,0,1],
@@ -54,15 +50,6 @@ const modelos = {
             ]
         },
         {
-            nombre: "cuadro",
-            matriz:[
-                [
-                    [4,4],
-                    [4,4]
-                ]
-            ]
-        },
-        {
             nombre:"Jota",
             matriz:[
                 [
@@ -87,6 +74,16 @@ const modelos = {
             ]
 
         },
+        {
+            nombre: "cuadro",
+            matriz:[
+                [
+                    [4,4],
+                    [4,4]
+                ]
+            ]
+        },
+        
         {
             nombre: "Te",
             matriz: [
@@ -158,4 +155,3 @@ const modelos = {
 
     ]
 }
-export default modelos;

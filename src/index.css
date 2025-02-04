@@ -73,3 +73,24 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+.bg-palo{
+  background-color: cyan;
+}
+.bg-cuadrado{
+  background-color: yellow;
+}
+.bg-l{
+  background-color: orange;
+}
+.bg-j{
+  background-color: blue;
+}
+.bg-z{
+  background-color: red;
+}
+.bg-s{
+  background-color: green;
+}
+.bg-t{
+  background-color: purple;
+}
