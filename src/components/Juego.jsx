@@ -6,15 +6,14 @@ import Pieza from './Pieza.jsx';
 import nuevaPieza from '../lib/nuevaPieza.js';
 
 export default function  Juego(){
+        //piezas de ejemplo
         const pieza1 = nuevaPieza();
         const pieza2 = nuevaPieza();
         const pieza3 = nuevaPieza();
         const pieza4 = nuevaPieza();
+        //Estados del juego
         const [flecha, setflecha] = useState('');
-        
-    
         const [arrayCasillas, setArrayCasillas] = useState(modelos.matriz);
-
         const [piezaActual, setpiezaActual] = useState(nuevaPieza());
         
         if (piezaActual.columna === 1 || piezaActual.columna === 11) {
@@ -35,22 +34,99 @@ export default function  Juego(){
                         
                 setArrayCasillas(arrayCasillas);
         }
-        }
-        
+        }     
         function insertarNuevaPieza(){
                 setpiezaActual(nuevaPieza());
         }
         function moverDra(){
                 console.log('Moviste a la derecha')
+                // Crear una copia de la pieza actual con la nueva posición
+                const nuevaColumna = piezaActual.columna + 1;
+    
+                // Verificar que no se salga de los límites
+                if (nuevaColumna + piezaActual.matriz[0].length <= 12) {
+                        setpiezaActual({...piezaActual, columna: nuevaColumna});
+                        
+                        // Crear una copia del array de casillas
+                        const nuevoArrayCasillas = arrayCasillas.map(row => [...row]);
+                        
+                        // Limpiar la posición anterior
+                        piezaActual.matriz.forEach((fila, filaIndex) => {
+                        fila.forEach((_, celdaIndex) => {
+                                nuevoArrayCasillas[piezaActual.fila + filaIndex][piezaActual.columna + celdaIndex] = 0;
+                        });
+                        });
+                        
+                        // Pintar la pieza en la nueva posición
+                        piezaActual.matriz.forEach((fila, filaIndex) => {
+                        fila.forEach((celda, celdaIndex) => {
+                                if (celda !== 0) {
+                                nuevoArrayCasillas[piezaActual.fila + filaIndex][nuevaColumna + celdaIndex] = celda;
+                                }
+                        });
+                        });
+                        
+                        setArrayCasillas(nuevoArrayCasillas);
+                }
+                
         }
         function moverIz(){
                 console.log('Moviste a la izquierda')
+                const nuevaColumna = piezaActual.columna - 1;
+    
+                // Verificar que no se salga de los límites
+                if (nuevaColumna >= 1) {
+                        setpiezaActual({...piezaActual, columna: nuevaColumna});
+                        
+                        // Crear una copia del array de casillas
+                        const nuevoArrayCasillas = arrayCasillas.map(row => [...row]);
+                        
+                        // Limpiar la posición anterior
+                        piezaActual.matriz.forEach((fila, filaIndex) => {
+                        fila.forEach((_, celdaIndex) => {
+                                nuevoArrayCasillas[piezaActual.fila + filaIndex][piezaActual.columna + celdaIndex] = 0;
+                        });
+                        });
+                        
+                        // Pintar la pieza en la nueva posición
+                        piezaActual.matriz.forEach((fila, filaIndex) => {
+                        fila.forEach((celda, celdaIndex) => {
+                                if (celda !== 0) {
+                                nuevoArrayCasillas[piezaActual.fila + filaIndex][nuevaColumna + celdaIndex] = celda;
+                                }
+                        });
+                        });
+                        
+                        setArrayCasillas(nuevoArrayCasillas);
+                }
         }
         function girar(){
                 console.log('Giraste')
+                
         }
         function bajar(){
-                console.log('Bajaste')
+                // Incrementar la posición vertical
+                const nuevaFila = piezaActual.fila + 1;
+                
+                // Actualizar la pieza actual con la nueva posición
+                setpiezaActual({...piezaActual, fila: nuevaFila});
+                
+                // Crear una copia del array de casillas para modificarlo
+                const nuevoArrayCasillas = [...arrayCasillas];
+                
+                // Pintar la pieza en la nueva posición
+                piezaActual.matriz.forEach((fila, filaIndex) => {
+                        fila.forEach((celda, celdaIndex) => {
+                        if (celda !== 0) { // Solo pintar las celdas no vacías
+                                nuevoArrayCasillas[nuevaFila + filaIndex][piezaActual.columna + celdaIndex] = celda;
+                        }
+                        });
+                });
+                
+                // Actualizar el estado del panel
+                setArrayCasillas(nuevoArrayCasillas);
+    
+    console.log('Pieza bajada a fila:', nuevaFila);
         }
         
         useEffect(() =>{
@@ -69,7 +145,7 @@ export default function  Juego(){
                                 case 'ArrowDown':
                                         bajar();
                                         break;
-                                case 'g':
+                                case 'ArrowUp':
                                         girar();
                                         break;
                                 default:
@@ -87,14 +163,8 @@ export default function  Juego(){
 
 
 )
-        
-        
-        
-        
 
-        
-    return ( 
-                
+    return (             
             <div id="intro" className='text-center p-5 bg-seconday text-white' style={{fontSize: '1.5em'}}>
                 
             <Panel modelos={arrayCasillas} />
@@ -110,8 +180,6 @@ export default function  Juego(){
                 <br />
                 <Pieza modelos={pieza4.matriz} />
                 
-
-
             </div>
             
     
