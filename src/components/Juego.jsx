@@ -102,6 +102,34 @@ export default function  Juego(){
         }
         function girar(){
                 console.log('Giraste')
+                const nuevaMatriz = piezaActual.matriz[0].map((_, index) =>
+                        piezaActual.matriz.map(row => row[index]).reverse()
+                    );
+                
+                    const nuevoArrayCasillas = arrayCasillas.map(row => [...row]);
+                
+                    // Limpiar la posición anterior
+                    piezaActual.matriz.forEach((fila, filaIndex) => {
+                        fila.forEach((celda, celdaIndex) => {
+                            if (celda !== 0) {
+                                nuevoArrayCasillas[piezaActual.fila + filaIndex][piezaActual.columna + celdaIndex] = 0;
+                            }
+                        });
+                    });
+                
+                    // Actualizar la pieza actual con la nueva matriz
+                    setpiezaActual({...piezaActual, matriz: nuevaMatriz});
+                
+                    // Pintar la pieza en la nueva posición
+                    nuevaMatriz.forEach((fila, filaIndex) => {
+                        fila.forEach((celda, celdaIndex) => {
+                            if (celda !== 0) {
+                                nuevoArrayCasillas[piezaActual.fila + filaIndex][piezaActual.columna + celdaIndex] = celda;
+                            }
+                        });
+                    });
+                
+                    setArrayCasillas(nuevoArrayCasillas);
                 
         }
         function bajar(){
